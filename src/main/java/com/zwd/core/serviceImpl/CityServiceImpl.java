@@ -31,15 +31,21 @@ public class CityServiceImpl implements CityService{
 
     @Override
     public City find(int id) {
-        return cityMapper.findOne(Long.valueOf(id));
+        return cityMapper.findOne(id);
 
     }
 
     public String delete(int id){
         City city=find(id);
-        cityMapper.delete(Long.valueOf(id));
-
-        areaService.deleteforCityCode(city.getCode());
+        try {
+            cityMapper.delete(id);                    //当id不存在时，抛出异常
+            areaService.deleteforCityCode(city.getCode());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return "删除失败";
+        }
         return "删除成功";
     }
 

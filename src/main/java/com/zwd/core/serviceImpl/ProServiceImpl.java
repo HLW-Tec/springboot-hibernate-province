@@ -30,15 +30,22 @@ public class ProServiceImpl implements ProvinceService {
 
     @Override
     public Province find(int id) {
-        return provinceMapper.findOne(Long.valueOf(id));
+        return provinceMapper.findOne(id);
 
     }
 
     public String delete(int id){
 //        cityService.deleteforCode(province.getCode());
         Province province=find(id);
-         provinceMapper.delete(Long.valueOf(id));
-         cityService.deleteforProvinceCode(province.getCode());
+        try {
+            provinceMapper.delete(id);              //当id不存在时，抛出异常
+            cityService.deleteforProvinceCode(province.getCode());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return "删除失败";
+        }
          return "删除成功";
     }
 

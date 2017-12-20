@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface AreaMapper extends JpaRepository<Area,Long> {
+public interface AreaMapper extends JpaRepository<Area,Integer> {
 
 
 //    @Query("update province set code=:code,name=:name where id=:id")

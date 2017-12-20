@@ -25,13 +25,21 @@ public class AreaServiceImpl implements AreaService{
 
     @Override
     public Area find(int id) {
-        return areaMapper.findOne(Long.valueOf(id));
+        return areaMapper.findOne(id);
 
     }
 
     public String delete(int id){
 //        cityService.deleteforCode(area.getCode());
-        areaMapper.delete(Long.valueOf(id));
+        try {
+            areaMapper.delete(id);                    //当id不存在时，抛出异常
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return "删除失败";
+        }
+
         return "删除成功";
     }
 

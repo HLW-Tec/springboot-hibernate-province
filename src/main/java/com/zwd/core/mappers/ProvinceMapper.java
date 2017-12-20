@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 
-public interface ProvinceMapper extends JpaRepository<Province,Long> {
+public interface ProvinceMapper extends JpaRepository<Province,Integer> {
 
 
 //    @Query("update province set code=:code,name=:name where id=:id")

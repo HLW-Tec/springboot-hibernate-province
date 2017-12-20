@@ -3,16 +3,20 @@ package com.zwd.core.controller;
 
 import com.zwd.core.entity.Area;
 import com.zwd.core.service.AreaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.xml.ws.soap.Addressing;
 import java.util.Map;
 
 @Controller
+@EnableAutoConfiguration
 @RequestMapping(value = "/area")
 public class AreaController {
-    
+    @Autowired
     private AreaService areaService;
     @RequestMapping(value = "/add")
     public String saveArea(Area area, Model model){
