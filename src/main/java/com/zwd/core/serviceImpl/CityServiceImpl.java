@@ -21,7 +21,7 @@ public class CityServiceImpl implements CityService{
     @Override
     public String add(City city) {
 
-        if(cityMapper.save(city)== null||provinceService.findCode(city.getProvincecode()).isEmpty())
+        if(provinceService.findCode(city.getProvincecode()).isEmpty()||cityMapper.save(city)==null)
         {
             return "添加失败";
         };
